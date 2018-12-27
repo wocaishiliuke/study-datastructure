@@ -83,6 +83,13 @@ public class BinaryTreeTest {
      */
     @Test
     public void testDelete() {
-        bt.delete(13);
+        bt.iterate();
+        bt.levelIterate();
+        System.out.println();
+        boolean delete = bt.delete(3);
+        bt.iterate();
+        bt.levelIterate();
+        System.out.println();
+        System.out.println(delete);
     }
 }

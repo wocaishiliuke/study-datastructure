@@ -71,8 +71,6 @@ public class Node {
                 return right.find(value);
             }
         }
-        // 该节点及其子节点都未能匹配到
-        return null;
 
         /** 方式2：非递归 */
         /*Node current = this;
@@ -84,8 +82,10 @@ public class Node {
             } else {
                 return current;
             }
-        }
-        return null;*/
+        }*/
+
+        System.out.println("can't find value...");
+        return null;
     }
 
     /**
@@ -94,19 +94,19 @@ public class Node {
      */
     public Node findMax() {
         /** 方式1：递归 */
-        /*if (right == null) {
+        if (right == null) {
             return this;
         }
-        return right.findMax();*/
+        return right.findMax();
 
         /** 方式2：非递归 */
-        Node current = this;
+        /*Node current = this;
         Node max = this;
         while (current != null) {
             max = current;
             current = current.right;
         }
-        return max;
+        return max;*/
     }
 
     /**
@@ -115,59 +115,63 @@ public class Node {
      */
     public Node findMin() {
         /** 方式1：递归 */
-        /*if (left == null) {
+        if (left == null) {
             return this;
         }
-        return left.findMin();*/
+        return left.findMin();
 
         /** 方式2：非递归 */
-        Node current = this;
+        /*Node current = this;
         Node min = this;
         while (current != null) {
             min = current;
             current = current.left;
         }
-        return min;
+        return min;*/
     }
 
     /**
      * 添加子节点
      * @param value
-     * @return void
+     * @return boolean
      */
-    public void addChild(int value) {
+    public boolean addChild(int value) {
         /** 方式1：递归 */
-        /*if (this.value > value) {
+        if (this.value > value) {
             if (left == null) {
                 left = new Node(value);
+                return true;
             }else {
-                left.addChild(value);
+                return left.addChild(value);
             }
         }else {
             if (right == null) {
                 right = new Node(value);
+                return true;
             }else {
-                right.addChild(value);
+                return right.addChild(value);
             }
-        }*/
+        }
 
         /** 方式2：非递归 */
-        Node current = this;
+        /*Node current = this;
         while (current != null) {
             if (current.value > value) {
                 if (current.left == null) {
                     current.left = new Node(value);
-                    return;
+                    return true;
                 }
                 current = current.left;
             } else {
                 if (current.right == null) {
                     current.right = new Node(value);
-                    return;
+                    return true;
                 }
                 current = current.right;
             }
         }
+        System.out.println("addChild failed...");
+        return false;*/
     }
 
     /**
@@ -266,7 +270,7 @@ public class Node {
         queue.add(this);
         while (!queue.isEmpty()) {
             Node temp = queue.poll();
-            System.out.println(temp.value);
+            System.out.print(temp.value + " ");
             if (temp.left != null) {
                 queue.add(temp.left);
             }

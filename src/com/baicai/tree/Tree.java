@@ -29,9 +29,9 @@ public interface Tree {
     /**
      * 添加节点
      * @param value
-     * @return void
+     * @return boolean
      */
-    void add(int value);
+    boolean add(int value);
 
     /**
      * （先、中、后序）遍历
@@ -48,7 +48,7 @@ public interface Tree {
     /**
      * 删除节点
      * @param value
-     * @return void
+     * @return boolean
      */
-    void delete(int value);
+    boolean delete(int value);
 }
